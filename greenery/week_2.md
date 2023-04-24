@@ -46,8 +46,8 @@ order by 4 desc;
 ```
 ![Screenshot 2023-04-23 at 6 15 25 PM](https://user-images.githubusercontent.com/124845082/233879757-82b8ee7a-da9f-4be6-9884-da334e162d6b.png)
 
-I enriched stg_users table with addresses information and placed into marts/core directory. Core because I thought it's something that can be analyzed by stakeholders stand alone as well as be joined with orders or products. It's a table that describes customers so it's a dimentional table. 
-For something specific like events I created a table in marts/product. It's a "fact" table.
+I enriched stg_users table with addresses information and placed into marts/core directory. Core because I thought it's something that can be analyzed by stakeholders stand alone as well as be joined with orders or products. It's a table that describes customers so it's a dimentional table. When deciding on the directory, I was in a doubt between "marts/product/intermediate" and "marts/core". Then based on what I mentioned above I decided to place it in "core"
+For something specific like events I created a table in marts/product. It's a "fact" table. This can be surfaced to stakeholders through BI tools, and sliced and diced in different ways to answer their questions. 
 
 The diagram below shows all the sources for my fact_page_views. I was thinking that having some user information like zipcode would be helpful to analyse and plan inventory in different locations.
 
