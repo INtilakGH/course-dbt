@@ -7,6 +7,7 @@ models:
       - name: address_id
         tests: 
           - not_null
+          - unique
       - name: address
         tests:
           - not_null
@@ -19,6 +20,7 @@ models:
       - name: order_id
         tests:
           - not_null
+          - unique
       - name: user_id
         tests: 
           - not_null
@@ -35,12 +37,19 @@ models:
         tests:
           - not_null
   - name: stg_products
+
     description: ""
     columns:
       - name: product_id
         tests:
           - not_null
+          - unique
+          
       - name: price
+        tests:
+          - positive_values
+      - name: inventory
+        description: ""
         tests:
           - positive_values
   - name: stg_promos
@@ -49,12 +58,14 @@ models:
       - name: promo_id
         tests:
           - not_null
+          - unique
   - name: stg_users
     description: ""
     columns:
       - name: user_id
         tests: 
-          - not_null        
+          - not_null
+          - unique        
       - name: first_name
         tests: 
           - not_null

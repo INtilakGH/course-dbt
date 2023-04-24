@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: fact_page_views
+    description: ""
+    columns: 
+      - name: event_id
+        tests: 
+          - not_null
+      - name: session_id
+        tests:
+          - not_null
+      - name: user_id
+        tests:  
+          - not_null
+        description: ""
+      - name: page_url
+        tests:
+          - not_null
+      - name: created_at
+        description: ""
+      - name: event_type
+        description: ""
+      - name: product_id
+        description: ""
+    
+      - name: order_id
+        description: ""
+        
+      - name: join_user_id
+        tests:
+          - not_null
+      - name: zipcode
+        description: ""
+      - name: product_name
+        description: ""
+      - name: join_product_id
+        description: ""
+      - name: price
+        description: ""
+  
