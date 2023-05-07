@@ -44,6 +44,21 @@ from fact_page_views
 group by product_name, price
 order by 4 desc;
 ```
+![Screenshot 2023-04-23 at 6 15 25 PM](https://user-images.githubusercontent.com/124845082/233879757-82b8ee7a-da9f-4be6-9884-da334e162d6b.png)
+
+I enriched stg_users table with addresses information and placed into marts/core directory. Core because I thought it's something that can be analyzed by stakeholders stand alone as well as be joined with orders or products. It's a table that describes customers so it's a dimentional table. When deciding on the directory, I was in a doubt between "marts/product/intermediate" and "marts/core". Then based on what I mentioned above I decided to place it in "core"
+For something specific like events I created a table in marts/product. It's a "fact" table. This can be surfaced to stakeholders through BI tools, and sliced and diced in different ways to answer their questions. 
+
+The diagram below shows all the sources for my fact_page_views. I was thinking that having some user information like zipcode would be helpful to analyse and plan inventory in different locations.
+
+![Screenshot 2023-04-23 at 3 40 45 PM](https://user-images.githubusercontent.com/124845082/233881090-3d8a9bd8-8d9e-4a45-a907-54e77658de95.png)
+
+
 
 ## Part 2
+I made a few assumptions about our data such as unique values in primary key columns (user_id in user table, product_id in product table, etc), and positive values for inventory in product table. I have used dbt tests like not_null and unique, and created a positive_value test in macros (as generic test that can be reused). All tests completed successfully.
 
+## Part 3
+I ran dbt snapshot and then queried my inventory_snapshot table. I could see changes in some items (see the screenshot)
+
+![Screenshot 2023-04-23 at 6 18 12 PM](https://user-images.githubusercontent.com/124845082/233879708-a1798f38-ae4c-4e6e-8154-4dfd3004fb02.png)
