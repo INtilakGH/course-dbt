@@ -1,0 +1,15 @@
+version: 2
+
+exposures:  
+  - name: Week-4-Greenery
+    description: >
+      Models that are critical to our product funnel dashboard
+    type: dashboard
+    maturity: high
+    owner:
+      name: Irina Tilak
+      email: irina@sigmacomputing.com
+    depends_on:
+      - ref('events_agg')
+      - ref('stg_products')
+      - ref('inventory_snapshot')
